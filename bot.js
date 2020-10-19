@@ -32,7 +32,18 @@ const controller = new Botkit({
   adapter: adapter,
 
   storage,
+  debug: false,
+  replyWithTyping: true,
+  studio_token: process.env.studio_token,
+  typingDelayFactor: 1.3,
 });
+
+// var controller = Botkit.anywhere({
+//   debug: false,
+//   replyWithTyping: true,
+//   studio_token: process.env.studio_token,
+//   typingDelayFactor: 1.3,
+// });
 
 if (process.env.CMS_URI) {
   controller.usePlugin(

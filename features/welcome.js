@@ -4,26 +4,33 @@ const typing = require("./typing");
 module.exports = function (controller) {
   let convo = new BotkitConversation("welcome", controller);
   // send a greeting
-  convo.addAction("typing");
+  // convo.addAction("typing");
 
-  convo.addMessage({ type: "typing" }, "typing");
+  // convo.addMessage({ type: "typing" }, "typing");
 
-  convo.addAction("next_thread", "typing");
+  // convo.addAction("next_thread", "typing");
 
-  convo.say("Hi my name is Daniel!");
+  convo.say("Hi my name is Daniel!", "next_thread");
 
-  convo.addAction("typing");
+  convo.addAction("typing1");
 
-  convo.addMessage({ type: "typing" }, "typing");
+  convo.addMessage({ type: "typing" }, "typing1");
 
-  convo.addAction("next_thread", "typing");
+  convo.addAction("next_thread1", "typing1");
 
-  convo.addMessage("What would you like to know about me?", "next_thread");
+  convo.addMessage("What would you like to know about me?", "next_thread1");
 
   convo.before("next_thread", async () => {
     return new Promise((resolve) => {
       // simulate some long running process
       setTimeout(resolve, 3000);
+    });
+  });
+
+  convo.before("next_thread1", async () => {
+    return new Promise((resolve) => {
+      // simulate some long running process
+      setTimeout(resolve, 2000);
     });
   });
 
