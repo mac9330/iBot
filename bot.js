@@ -35,7 +35,7 @@ const controller = new Botkit({
   debug: false,
   replyWithTyping: true,
   studio_token: process.env.studio_token,
-  typingDelayFactor: 1.3,
+  typingDelayFactor: 3.0,
 });
 
 // var controller = Botkit.anywhere({

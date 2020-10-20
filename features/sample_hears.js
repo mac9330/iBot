@@ -5,10 +5,10 @@
 module.exports = function (controller) {
   // use a function to match a condition in the message
   controller.hears(
-    async (message) => message.text && message.text.toLowerCase() === "foo",
+    async (message) => message.text && message.text.toLowerCase() === "tech stack",
     ["message"],
     async (bot, message) => {
-      await bot.reply(message, 'I heard "foo" via a function test');
+      await bot.reply(message, 'My tech stack is');
     }
   );
 
