@@ -53,7 +53,7 @@ footer {
 }
 
 a {
-  color: #9d9aa8;
+  color: #0d7377;
 }
 
 .copyurl {
@@ -92,7 +92,7 @@ div.input label {
 }
 .addon button:hover {
   background: #fff;
-  color: #a795ef;
+  color: #0d7377;
 }
 
 div.hr {
@@ -103,7 +103,7 @@ div.hr {
 }
 
 a.button {
-  border: 2px solid #a795ef;
+  border: 2px solid #0d7377;
   font-weight: bold;
   margin: 0;
   border-radius: 3px;
@@ -247,7 +247,7 @@ a.button:hover {
 }
 #message_window .message.outgoing {
   float: right;
-  background: #a795ef;
+  background: #0d7377;
   color: white;
 }
 #message_window #message_replies {
@@ -278,8 +278,11 @@ a.button:hover {
   cursor: pointer;
 }
 #message_window #message_replies a:hover {
-  background: #14ffec;
-  color: rgb(0, 0, 0);
+  background-color: #14ffec;
+  color: black;
+  font-weight: 900;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1.1);
 }
 
 /* typing indicator CSS based on code by Joseph Fusco -> https://codepen.io/fusco/pen/XbpaYv */
@@ -340,6 +343,11 @@ a.button:hover {
 
 #welcome {
   margin-left: 440px;
+}
+
+#messenger_input {
+  background-color: #212121;
+  color: #14ffec;
 }
 
 /*# sourceMappingURL=styles.css.map */
