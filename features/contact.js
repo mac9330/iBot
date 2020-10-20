@@ -6,13 +6,16 @@ module.exports = function (controller) {
 
   contact.say({ type: "typing" });
   contact.addAction("contact");
-  contact.addMessage(`My email is ${resumeContact.email}`, "next_thread");
+  contact.addMessage(
+    `My E-mail is <a href=${resumeContact.email}>${resumeContact.email}</a>`,
+    "next_thread"
+  );
   contact.addAction("next_thread", "contact");
   contact.addMessage({ type: "typing" }, "next_thread");
   contact.addAction("middle_thread", "next_thread");
   contact.addMessage({ type: "typing" }, "contact");
   contact.addMessage(
-    `My phone number is ${resumeContact.phone}`,
+    `My phone number is <a href="tel:+16315528552">${resumeContact.phone}</a>`,
     "middle_thread"
   );
   contact.addAction("middle_thread", "contact");
@@ -20,7 +23,7 @@ module.exports = function (controller) {
   contact.addAction("last_thread", "middle_thread");
   contact.addMessage({ type: "typing" }, "contact");
   contact.addMessage(
-    `My linkedIn is <a href=${resumeContact.social}>${resumeContact.social}</a>`,
+    `My LinkedIn is <a href=${resumeContact.social}>${resumeContact.social}</a>`,
     "last_thread"
   );
 

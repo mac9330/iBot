@@ -14,16 +14,21 @@ module.exports = function (controller) {
 
   let convo = new BotkitConversation("welcome", controller);
 
+  let name = "Daniel Guardado";
+
   convo.say({ type: "typing" });
   convo.addAction("welcome");
-  convo.addMessage("Hi my name is Daniel!", "next_thread");
+  convo.addMessage(
+    `Hi my name is ${name} and I am currently looking for a job!`,
+    "next_thread"
+  );
   convo.addAction("next_thread", "welcome");
   convo.addMessage({ type: "typing" }, "next_thread");
   convo.addAction("last_thread", "next_thread");
   convo.addMessage({ type: "typing" }, "welcome");
   convo.addMessage(
     {
-      text: "what do you want to know?",
+      text: "What would you like to know about me?",
       quick_replies: quick,
     },
     "last_thread"

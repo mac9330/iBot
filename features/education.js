@@ -1,6 +1,14 @@
 const { BotkitConversation } = require("botkit");
 
 module.exports = function (controller) {
+  let state = {
+    schoolName: "App Academy",
+    eduObj: {
+      name: "App Academy",
+      degree: "We did things",
+      timeline: "April 2020 - July 2020",
+    },
+  };
   let education = new BotkitConversation("education", controller);
 
   let replies = Object.keys(controller.resume.education);
@@ -36,15 +44,64 @@ module.exports = function (controller) {
     await bot.beginDialog("education");
   });
 
-  // controller.hears("University", "message", async (bot, message) => {
-  //   let edu = controller.resume.education.message;
-  //   await bot.addMessage({
-  //     text: `During my time in University I studied
-  //     ${edu.degree}`,
-  //   });
-  // });
-  let edu = controller.resume.education;
-  Object.keys(edu);
+  controller.hears(
+    ["App Academy", "Nassau Community College"],
+    "message",
+    async (bot, message) => {
+      state.schoolName = message.text;
+      let schoolStr = message.text
+        .split(" ")
+        .map((word, idx) => {
+          word =
+            idx === 0
+              ? word.toLowerCase()
+              : word[0].toUpperCase() + word.slice(1);
+          return word;
+        })
+        .join("");
+      state.eduObj = controller.resume.education[schoolStr];
+      await bot.beginDialog("school");
+      await bot.beginDialog("continuation");
+    }
+  );
 
-  // controller.hears();
+  // ! Education dialog
+
+  let school = new BotkitConversation("school", controller);
+
+  school.say({ type: "typing" });
+  school.addAction("school");
+  console.log(state);
+  school.addMessage(
+    `During my time at ${state.schoolName} I studied ${state.eduObj.degree}`,
+    "next_thread"
+  );
+  school.addAction("next_thread", "school");
+  school.addMessage({ type: "typing" }, "next_thread");
+  school.addAction("last_thread", "next_thread");
+  school.addMessage({ type: "typing" }, "school");
+  school.addMessage(
+    `I studied here from ${state.eduObj.timeline}`,
+    "last_thread"
+  );
+
+  school.before("next_thread", async () => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 1500);
+    });
+  });
+
+  school.before("middle_thread", async () => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 1500);
+    });
+  });
+
+  school.before("last_thread", async () => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 1500);
+    });
+  });
+
+  controller.addDialog(school);
 };

@@ -16,7 +16,7 @@ module.exports = function (controller) {
   continuation.addAction("continuation");
   continuation.addMessage(
     {
-      text: "what else would you like to know about me?",
+      text: "What else would you like to know about me?",
       quick_replies: quick,
     },
     "next_thread"
