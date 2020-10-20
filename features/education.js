@@ -44,28 +44,24 @@ module.exports = function (controller) {
     await bot.beginDialog("education");
   });
 
-  controller.hears(
-    ["App Academy", "Nassau Community College"],
-    "message",
-    async (bot, message) => {
-      state.schoolName = message.text;
-      let schoolStr = message.text
-        .split(" ")
-        .map((word, idx) => {
-          word =
-            idx === 0
-              ? word.toLowerCase()
-              : word[0].toUpperCase() + word.slice(1);
-          return word;
-        })
-        .join("");
-      state.eduObj = controller.resume.education[schoolStr];
-      await bot.beginDialog("school");
-      await bot.beginDialog("continuation");
-    }
-  );
+  controller.hears("App Academy", "message", async (bot, message) => {
+    state.schoolName = message.text;
+    let schoolStr = message.text
+      .split(" ")
+      .map((word, idx) => {
+        word =
+          idx === 0
+            ? word.toLowerCase()
+            : word[0].toUpperCase() + word.slice(1);
+        return word;
+      })
+      .join("");
+    state.eduObj = controller.resume.education[schoolStr];
+    await bot.beginDialog("school");
+    await bot.beginDialog("continuation");
+  });
 
-  // ! Education dialog
+  // ! Education 1 dialog
 
   let school = new BotkitConversation("school", controller);
 
@@ -104,4 +100,61 @@ module.exports = function (controller) {
   });
 
   controller.addDialog(school);
+
+  controller.hears(
+    "Nassau Community College",
+    "message",
+    async (bot, message) => {
+      state.schoolName = message.text;
+      let schoolStr = message.text
+        .split(" ")
+        .map((word, idx) => {
+          word =
+            idx === 0
+              ? word.toLowerCase()
+              : word[0].toUpperCase() + word.slice(1);
+          return word;
+        })
+        .join("");
+      state.eduObj = controller.resume.education[schoolStr];
+      await bot.beginDialog("schoolTwo");
+      await bot.beginDialog("continuation");
+    }
+  );
+
+  // ! Education 2 dialog
+
+  let schoolTwo = new BotkitConversation("schoolTwo", controller);
+
+  schoolTwo.say({ type: "typing" });
+  schoolTwo.addAction("schoolTwo");
+  console.log(state);
+  schoolTwo.addMessage(
+    `During my time at Nassau Community College I studied English Lit`,
+    "next_thread"
+  );
+  schoolTwo.addAction("next_thread", "schoolTwo");
+  schoolTwo.addMessage({ type: "typing" }, "next_thread");
+  schoolTwo.addAction("last_thread", "next_thread");
+  schoolTwo.addMessage({ type: "typing" }, "schoolTwo");
+  schoolTwo.addMessage(`I studied here from 2014-2018`, "last_thread");
+
+  schoolTwo.before("next_thread", async () => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 1500);
+    });
+  });
+
+  schoolTwo.before("middle_thread", async () => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 1500);
+    });
+  });
+
+  schoolTwo.before("last_thread", async () => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 1500);
+    });
+  });
+  controller.addDialog(schoolTwo);
 };
