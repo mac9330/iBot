@@ -19,7 +19,7 @@ module.exports = function (controller) {
   convo.say({ type: "typing" });
   convo.addAction("welcomeback");
   convo.addMessage(
-    `Welcome back! I'm still ${name} and still looking for a job`,
+    `Welcome back! I'm still ${name} and still looking for a job.`,
     "next_thread"
   );
   convo.addAction("next_thread", "welcomeback");

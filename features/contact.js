@@ -50,8 +50,23 @@ module.exports = function (controller) {
 
   controller.addDialog(contact);
 
-  controller.hears("contact", "message", async (bot, message) => {
-    await bot.beginDialog("contact");
-    await bot.beginDialog("continuation");
-  });
+  controller.hears(
+    [
+      "contact",
+      "message",
+      "meeting",
+      "touch",
+      "network",
+      "call",
+      "linkedin",
+      "phone",
+      "touch base",
+      "reach you",
+    ],
+    "message",
+    async (bot, message) => {
+      await bot.beginDialog("contact");
+      await bot.beginDialog("continuation");
+    }
+  );
 };

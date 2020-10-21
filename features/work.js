@@ -17,7 +17,7 @@ module.exports = function (controller) {
   work.addAction("work");
   work.addMessage(
     {
-      text: "which job would you like to know about.",
+      text: "Which job would you like to know about.",
       quick_replies: quick,
     },
     "next_thread"
@@ -32,9 +32,23 @@ module.exports = function (controller) {
 
   controller.addDialog(work);
 
-  controller.hears("work", "message", async (bot, message) => {
-    await bot.beginDialog("work");
-  });
+  controller.hears(
+    [
+      "work",
+      "career",
+      "experience",
+      "job",
+      "background",
+      "professional",
+      "business",
+      "trade",
+      "postion",
+    ],
+    "message",
+    async (bot, message) => {
+      await bot.beginDialog("work");
+    }
+  );
 
   // ! Work ^^
   // ! Job1 dialog
@@ -45,7 +59,7 @@ module.exports = function (controller) {
   job1.say({ type: "typing" });
   job1.addAction("job1");
   job1.addMessage(
-    `During my time at ${resumeJob.job1.name} i was an ${resumeJob.job1.title}`,
+    `During my time at ${resumeJob.job1.name} i was an ${resumeJob.job1.title}.`,
     "next_thread"
   );
   job1.addAction("next_thread", "job1");
@@ -53,7 +67,7 @@ module.exports = function (controller) {
   job1.addAction("middle_thread", "next_thread");
   job1.addMessage({ type: "typing" }, "job1");
   job1.addMessage(
-    `At ${resumeJob.job1.name} i would ${resumeJob.job1.description}`,
+    `At ${resumeJob.job1.name} I ${resumeJob.job1.description}`,
     "middle_thread"
   );
   job1.addAction("middle_thread", "job1");
@@ -97,7 +111,7 @@ module.exports = function (controller) {
   job2.say({ type: "typing" });
   job2.addAction("job2");
   job2.addMessage(
-    `During my time at ${resumeJob.job2.name} i was an ${resumeJob.job2.title}`,
+    `During my time at ${resumeJob.job2.name} I was a ${resumeJob.job2.title}`,
     "next_thread"
   );
   job2.addAction("next_thread", "job2");
@@ -105,7 +119,7 @@ module.exports = function (controller) {
   job2.addAction("middle_thread", "next_thread");
   job2.addMessage({ type: "typing" }, "job2");
   job2.addMessage(
-    `At ${resumeJob.job2.name} i would ${resumeJob.job2.description}`,
+    `At ${resumeJob.job2.name} I ${resumeJob.job2.description}`,
     "middle_thread"
   );
   job2.addAction("middle_thread", "job2");

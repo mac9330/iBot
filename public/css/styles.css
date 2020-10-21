@@ -12,6 +12,10 @@ html {
   font-family: "helvetica", sans-serif;
 }
 
+img {
+  height: 30vh;
+}
+
 .wrapper {
   position: relative;
   max-width: 1000px;

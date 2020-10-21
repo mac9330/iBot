@@ -17,7 +17,7 @@ module.exports = function (controller) {
   tech.addAction("tech");
   tech.addMessage(
     {
-      text: "would you like to hear about languages or frameworks",
+      text: "Would you like to hear about languages or frameworks",
       quick_replies: quick,
     },
     "next_thread"
@@ -32,9 +32,22 @@ module.exports = function (controller) {
 
   controller.addDialog(tech);
 
-  controller.hears("technology", "message", async (bot, message) => {
-    await bot.beginDialog("technology");
-  });
+  controller.hears(
+    [
+      "technology",
+      "stack",
+      "code",
+      "application",
+      "projects",
+      "sites",
+      "websites",
+      "website",
+    ],
+    "message",
+    async (bot, message) => {
+      await bot.beginDialog("technology");
+    }
+  );
 
   let languages = new BotkitConversation("languages", controller);
   let language = controller.resume.technology.languages.name;
@@ -85,10 +98,14 @@ module.exports = function (controller) {
 
   controller.addDialog(frameworks);
 
-  controller.hears("frameworks", "message", async (bot, message) => {
-    await bot.beginDialog("frameworks");
-    await bot.beginDialog("continuation");
-  });
+  controller.hears(
+    ["frameworks", "react", "redux", "library"],
+    "message",
+    async (bot, message) => {
+      await bot.beginDialog("frameworks");
+      await bot.beginDialog("continuation");
+    }
+  );
 
   // job1.say({ type: "typing" });
   // job1.addAction("job1");
