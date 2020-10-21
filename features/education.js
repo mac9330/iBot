@@ -65,7 +65,7 @@ module.exports = function (controller) {
   school.say({ type: "typing" });
   school.addAction("school");
   school.addMessage(
-    `During my time at ${schoolStr} it was a ${edu.appAcademy.degree}`,
+    `${schoolStr} was a ${edu.appAcademy.degree}`,
     "next_thread"
   );
   school.addAction("next_thread", "school");
@@ -73,7 +73,7 @@ module.exports = function (controller) {
   school.addAction("last_thread", "next_thread");
   school.addMessage({ type: "typing" }, "school");
   school.addMessage(
-    `I studied at ${schoolStr} from ${edu.appAcademy.timeline}`,
+    `I studied at App Academy from ${edu.appAcademy.timeline}`,
     "last_thread"
   );
 
@@ -83,11 +83,11 @@ module.exports = function (controller) {
     });
   });
 
-  school.before("middle_thread", async () => {
-    return new Promise((resolve) => {
-      setTimeout(resolve, 1500);
-    });
-  });
+  // school.before("middle_thread", async () => {
+  //   return new Promise((resolve) => {
+  //     setTimeout(resolve, 1500);
+  //   });
+  // });
 
   school.before("last_thread", async () => {
     return new Promise((resolve) => {
@@ -115,7 +115,7 @@ module.exports = function (controller) {
   schoolTwo.say({ type: "typing" });
   schoolTwo.addAction("schoolTwo");
   schoolTwo.addMessage(
-    `During my time at ${schoolStr2} I studied ${edu.binghamton.degree}`,
+    `During my time at Binghamton University I studied ${edu.binghamton.degree}`,
     "next_thread"
   );
   schoolTwo.addAction("next_thread", "schoolTwo");
@@ -133,11 +133,11 @@ module.exports = function (controller) {
     });
   });
 
-  schoolTwo.before("middle_thread", async () => {
-    return new Promise((resolve) => {
-      setTimeout(resolve, 1500);
-    });
-  });
+  // schoolTwo.before("middle_thread", async () => {
+  //   return new Promise((resolve) => {
+  //     setTimeout(resolve, 1500);
+  //   });
+  // });
 
   schoolTwo.before("last_thread", async () => {
     return new Promise((resolve) => {

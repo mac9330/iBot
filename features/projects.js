@@ -61,7 +61,7 @@ module.exports = function (controller) {
   project1.addAction("last_thread", "middle_thread");
   project1.addMessage({ type: "typing" }, "project1");
   project1.addMessage(
-    `Here's a link to my project <a>${resumeProjects.project1.link}</a>`,
+    `Here's a link to my project <a href="${resumeProjects.project1.link}">${resumeProjects.project1.link}</a>`,
     "last_thread"
   );
 
@@ -115,7 +115,7 @@ module.exports = function (controller) {
   project2.addAction("last_thread", "middle_thread");
   project2.addMessage({ type: "typing" }, "project2");
   project2.addMessage(
-    `Here's a link to my project <a>${resumeProjects.project2.link}</a>`,
+    `Here's a link to my project <a href="${resumeProjects.project2.link}">${resumeProjects.project2.link}</a>`,
     "last_thread"
   );
 
@@ -169,7 +169,7 @@ module.exports = function (controller) {
   project3.addAction("last_thread", "middle_thread");
   project3.addMessage({ type: "typing" }, "project3");
   project3.addMessage(
-    `Here's a link to my project <a>${resumeProjects.project3.link}</a>`,
+    `Here's a link to my project <a href="${resumeProjects.project3.link}">${resumeProjects.project3.link}</a>`,
     "last_thread"
   );
 
