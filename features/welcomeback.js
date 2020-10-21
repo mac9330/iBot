@@ -14,7 +14,7 @@ module.exports = function (controller) {
 
   let convo = new BotkitConversation("welcomeback", controller);
 
-  let name = "Daniel Guardado";
+  let name = "Mackenzie Young";
 
   convo.say({ type: "typing" });
   convo.addAction("welcomeback");
