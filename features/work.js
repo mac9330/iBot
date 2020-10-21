@@ -59,7 +59,7 @@ module.exports = function (controller) {
   job1.say({ type: "typing" });
   job1.addAction("job1");
   job1.addMessage(
-    `I currently work at ${resumeJob.job1.name} i am a ${resumeJob.job1.title}.`,
+    `I currently work at ${resumeJob.job1.name} I am a ${resumeJob.job1.title}.`,
     "next_thread"
   );
   job1.addAction("next_thread", "job1");
