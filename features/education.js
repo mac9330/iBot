@@ -65,7 +65,7 @@ module.exports = function (controller) {
   school.say({ type: "typing" });
   school.addAction("school");
   school.addMessage(
-    `During my time at ${schoolStr} I studied ${edu.appAcademy.degree}`,
+    `During my time at ${schoolStr} it was a ${edu.appAcademy.degree}`,
     "next_thread"
   );
   school.addAction("next_thread", "school");

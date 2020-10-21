@@ -5,14 +5,14 @@ module.exports = function (controller) {
         name: "Cream Digital, LLC",
         title: "SEO/PPC Coordinator",
         description:
-          "WordPress web developer creating, managing, and updating custom WordPress websites leveraging PHP 7, HTML5, CSS3, and JavaScript. Also, in charge of driving brand awareness and lead generation through all digital channels for my clients.",
+          "am a WordPress web developer in charge of creating, managing, and updating custom WordPress websites leveraging PHP 7, HTML5, CSS3, and JavaScript. Also, I am in charge of driving brand awareness and lead generation through all digital channels for my clients.",
         timeline: "August 2019 - Current",
       },
       job2: {
         name: "Didit, LLC",
         title: "Content Creator",
         description:
-          "Digital marketing strategist focusing on the client’s domain presence in search engine results paid and organic.",
+          "I was a digital marketing strategist focusing on the client’s domain presence in search engine results paid and organic.",
         timeline: "September 2018 - August 2019",
       },
     },
@@ -20,12 +20,12 @@ module.exports = function (controller) {
       appAcademy: {
         name: "App Academy",
         degree:
-          "Immersive software development course with a focus on full-stack web development",
+          "rigorous 1000-hour software engineering course with less than a 3% acceptance rate. Topics include: Algorithms, Ruby - on - Rails, JavaScript, React, Redux, PostgreSQL, scalability, OOP, and single - page web apps.",
         timeline: "May 2020 - August 2020",
       },
       binghamton: {
         name: "Binghamton University",
-        degree: "English Literature",
+        degree: "English Literature and graduated with my Bachelor's Degree",
         timeline: "August 2014 - May 2018",
       },
     },
