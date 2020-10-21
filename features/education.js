@@ -1,14 +1,7 @@
 const { BotkitConversation } = require("botkit");
 
 module.exports = function (controller) {
-  let state = {
-    schoolName: "App Academy",
-    eduObj: {
-      name: "App Academy",
-      degree: "Full Stack Development",
-      timeline: "April 2020 - July 2020",
-    },
-  };
+  const edu = controller.resume.education;
   let education = new BotkitConversation(["education"], controller);
 
   let replies = Object.keys(controller.resume.education);
@@ -59,18 +52,7 @@ module.exports = function (controller) {
     ["App Academy", "a/A", "bootcamp", "software engineering"],
     "message",
     async (bot, message) => {
-      state.schoolName = message.text;
-      let schoolStr = message.text
-        .split(" ")
-        .map((word, idx) => {
-          word =
-            idx === 0
-              ? word.toLowerCase()
-              : word[0].toUpperCase() + word.slice(1);
-          return word;
-        })
-        .join("");
-      state.eduObj = controller.resume.education[schoolStr];
+      let schoolStr = Object.values(edu)[0];
       await bot.beginDialog("school");
       await bot.beginDialog("continuation");
     }
@@ -79,11 +61,11 @@ module.exports = function (controller) {
   // ! Education 1 dialog
 
   let school = new BotkitConversation("school", controller);
-
+  let schoolStr = Object.keys(edu)[0]
   school.say({ type: "typing" });
   school.addAction("school");
   school.addMessage(
-    `During my time at ${state.schoolName} I studied ${state.eduObj.degree}`,
+    `During my time at ${schoolStr} I studied ${edu.appAcademy.degree}`,
     "next_thread"
   );
   school.addAction("next_thread", "school");
@@ -91,7 +73,7 @@ module.exports = function (controller) {
   school.addAction("last_thread", "next_thread");
   school.addMessage({ type: "typing" }, "school");
   school.addMessage(
-    `I studied here from ${state.eduObj.timeline}`,
+    `I studied at ${schoolStr} from ${edu.appAcademy.timeline}`,
     "last_thread"
   );
 
@@ -116,21 +98,11 @@ module.exports = function (controller) {
   controller.addDialog(school);
 
   controller.hears(
-    ["Nassau Community College", "ncc", "nassau"],
+    ["Binghamton University", "BU", "Binghamton", "University", "College"],
     "message",
     async (bot, message) => {
-      state.schoolName = message.text;
-      let schoolStr = message.text
-        .split(" ")
-        .map((word, idx) => {
-          word =
-            idx === 0
-              ? word.toLowerCase()
-              : word[0].toUpperCase() + word.slice(1);
-          return word;
-        })
-        .join("");
-      state.eduObj = controller.resume.education[schoolStr];
+      schoolName = message.text;
+      let schoolStr2 = Object.keys(edu)[1]
       await bot.beginDialog("schoolTwo");
       await bot.beginDialog("continuation");
     }
@@ -139,11 +111,11 @@ module.exports = function (controller) {
   // ! Education 2 dialog
 
   let schoolTwo = new BotkitConversation("schoolTwo", controller);
-
+  let schoolStr2 = Object.keys(edu)[1]
   schoolTwo.say({ type: "typing" });
   schoolTwo.addAction("schoolTwo");
   schoolTwo.addMessage(
-    `During my time at Nassau Community College I studied Information Technology`,
+    `During my time at ${schoolStr2} I studied ${edu.binghamton.degree}`,
     "next_thread"
   );
   schoolTwo.addAction("next_thread", "schoolTwo");
@@ -151,7 +123,7 @@ module.exports = function (controller) {
   schoolTwo.addAction("last_thread", "next_thread");
   schoolTwo.addMessage({ type: "typing" }, "schoolTwo");
   schoolTwo.addMessage(
-    `I studied here from September 2017 - December 2019`,
+    `I studied at ${schoolStr2} from ${edu.binghamton.timeline}`,
     "last_thread"
   );
 
