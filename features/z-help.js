@@ -4,7 +4,7 @@ module.exports = (controller) => {
     resume = controller.resume;
     const Keys = Object.keys(resume).filter((field) => resume[field].toString());
     const resumeKeys =
-        `${Keys.slice(0, Keys.length - 2).join(", ")} or ${Keys[Keys.length - 1]}`
+        `${Keys.slice(0, Keys.length - 2).join(", ")} or my ${Keys[Keys.length - 1]}`
 
     controller.hears(new RegExp(/.*help.*/i), ['message', 'direct_message'], async function (bot, message) {
 
