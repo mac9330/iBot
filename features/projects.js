@@ -32,7 +32,7 @@ module.exports = function (controller) {
 
   controller.addDialog(projects);
 
-  controller.hears("projects", "message", async (bot, message) => {
+  controller.hears(["projects", "project", "applications", "apps"], "message", async (bot, message) => {
     await bot.beginDialog("projects");
   });
 
