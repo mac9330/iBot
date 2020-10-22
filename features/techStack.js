@@ -42,6 +42,7 @@ module.exports = function (controller) {
       "sites",
       "websites",
       "website",
+      "qualifications",
     ],
     "message",
     async (bot, message) => {

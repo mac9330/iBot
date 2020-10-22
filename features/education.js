@@ -41,6 +41,8 @@ module.exports = function (controller) {
       "institue",
       "institution",
       "organization",
+      "degree",
+      "certification"
     ],
     "message",
     async (bot, message) => {
